@@ -64,7 +64,7 @@ def main():
     #random.shuffle(lyst)
     tree = LinkedBST(lyst)
     print(tree, tree.height())
-    print(tree.isBalanced())
+    print(tree.is_balanced())
     print(tree.rangeFind(30,91))
     print(tree.successor(20))
     print(tree.predecessor(50))
