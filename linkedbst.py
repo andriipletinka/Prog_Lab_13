@@ -342,6 +342,8 @@ class LinkedBST(AbstractCollection):
         import sys
         sys.setrecursionlimit(len(words))
 
+        words = words[:11000] #with full words.txt file program crashes
+
         cur_time = time()
         random_10k_words_in_ordered = words[:10000]
         print("time of random_10k_words_in_ordered:", time()-cur_time)
@@ -349,21 +351,27 @@ class LinkedBST(AbstractCollection):
         words_binary = LinkedBST()
         for word in words:
             words_binary.add(word)
+        shuffle(words)
         cur_time = time()
-        random_10k_words_in_binary_tree = list(words_binary.inorder()[:10000])
+        for word in words:
+            words_binary.find(word)
         print("time of random_10k_words_in_binary_tree:", time()-cur_time)
 
         shuffle(words)
         words_binary_unordered = LinkedBST()
         for word in words:
             words_binary_unordered.add(word)
+        shuffle(words)
+        for word in words:
+            words_binary_unordered.find(word)
         cur_time = time()
-        random_10k_words_in_binary_unordered_tree = list(words_binary.inorder()[:10000])
         print("time of random_10k_words_in_binary_unordered_tree:", time()-cur_time)
 
         words_binary.rebalance()
+        shuffle(words)
+        for word in words:
+            words_binary_unordered.find(word)
         cur_time = time()
-        random_10k_words_in_balanced_binary_tree = list(words_binary.inorder()[:10000])
         print("time of random_10k_words_in_balanced_binary_tree:", time()-cur_time)
 
 if __name__ == "__main__":
